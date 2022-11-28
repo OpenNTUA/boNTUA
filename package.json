@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "json-server": "json-server --watch src/db.json"
   },
   "dependencies": {
     "discord.js": "^14.6.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "json-server": "^0.17.1"
   },
   "devDependencies": {
     "eslint": "^8.28.0"
