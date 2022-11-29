@@ -1,0 +1,10 @@
+{
+  "/progintro/quizes/:id": "/progintro_quizes/:id",
+  "/progintro/exercises/:id": "/progintro_exercises/:id",
+  "/progtech/quizes/:id": "/progtech_quizes/:id",
+  "/progtech/exercises/:id": "/progtech_quizes/:id",
+  "/progintro/quizes/": "/progintro_quizes/",
+  "/progintro/exercises/": "/progintro_exercises/",
+  "/progtech/quizes/": "/progtech_quizes/",
+  "/progtech/exercises/": "/progtech_quizes/"
+}
