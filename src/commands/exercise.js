@@ -10,7 +10,7 @@ module.exports = {
 			option
 				.setName('subject')
 				.setDescription('The subject to get the problem for')
-				.addChoices(...Object.keys(data))
+				.addChoices(...Object.keys(data).map(choice => ({ name: choice, value: choice })))
 				.setRequired(true))
 		.addStringOption(option =>
 			option

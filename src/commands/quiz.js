@@ -10,12 +10,14 @@ module.exports = {
 				.setName('subject')
 				.setDescription('The subject to get the quiz for')
 				.setRequired(true)
-				.addChoices(...Object.keys(data)),
+				.addChoices(...Object.keys(data).map(choice => ({ name: choice, value: choice }))),
 		)
 		.addIntegerOption(option =>
 			option
 				.setName('id')
-				.setDescription('The ID of the multiple choice question you want')),
+				.setDescription('The ID of the multiple choice question you want')
+				.setMinValue(1),
+		),
 	execute: async (interaction) => {
 		await interaction.reply('poing');
 	},

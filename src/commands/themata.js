@@ -15,7 +15,7 @@ module.exports = {
 			option
 				.setName('type')
 				.setDescription('The type of exam: Eπαναληπτική ή Κανονική')
-				.addChoices('Κανονική', 'Eπαναληπτική'),
+				.addChoices({ name: 'Κανονική', value: 'kan' }, { name: 'Eπαναληπτική', value: 'ep' }),
 		),
 	execute: async (interaction) => {
 		await interaction.reply('Pong');

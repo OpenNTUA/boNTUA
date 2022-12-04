@@ -9,7 +9,7 @@ module.exports = {
 			option
 				.setName('subject')
 				.setDescription('The subject you want the information for')
-				.setChoices(...Object.keys(data)),
+				.setChoices(...Object.keys(data).map(choice => ({ name: choice, value: choice }))),
 		),
 	execute: async (interaction) => {
 		await interaction.reply('pong');
