@@ -15,7 +15,7 @@ module.exports = {
 			await interaction.editReply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 		console.log('---------');
-		console.log(interaction.user.username, 'triggered an interaction in');
+		console.log(interaction.user.username, 'triggered an interaction');
 		console.log('---------');
 	},
 };
