@@ -31,7 +31,7 @@ module.exports = {
 			const question = data[subject]['quizes'].get(id.toString());
 			// Check if question with that id exists
 			if (!question) {
-				await interaction.reply('Δεν υπάρχει ερώτηση με αυτό το ID');
+				await interaction.editReply('Δεν υπάρχει ερώτηση με αυτό το ID');
 				return;
 			}
 			await respondWithQuestion(question, interaction);
