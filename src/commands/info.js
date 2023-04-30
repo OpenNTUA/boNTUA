@@ -1,17 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
-const data = require('../data/index.js');
+const { respondWithInfo } = require('../responses/info.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('info')
-		.setDescription('Gives general information or information about the chosen subject')
-		.addStringOption(option =>
-			option
-				.setName('subject')
-				.setDescription('The subject you want the information for')
-				.setChoices(...Object.keys(data).map(choice => ({ name: choice, value: choice }))),
-		),
+		.setDescription('Gives general information or information about the chosen subject'),
 	execute: async (interaction) => {
-		await interaction.reply('pong');
+		await interaction.deferReply();
+		await respondWithInfo(interaction);
 	},
 };
