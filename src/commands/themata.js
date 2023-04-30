@@ -1,23 +1,19 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { respondWithThemata } = require('../responses/themata.js');
 // const data = require('../data/index.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('themata')
-		.setDescription('Get the link to a pdf file of past exam papers')
-		.addNumberOption(option =>
-			option
-				.setName('year')
-				.setDescription('The year of the test')
-				.setAutocomplete(true),
-		)
+		.setDescription('Τα θέματα των εξετάσεων παλιών ετών')
 		.addStringOption(option =>
 			option
-				.setName('type')
-				.setDescription('The type of exam: Eπαναληπτική ή Κανονική')
-				.addChoices({ name: 'Κανονική', value: 'kan' }, { name: 'Eπαναληπτική', value: 'ep' }),
+				.setName('subject')
+				.setDescription('Το μάθημα που θέλεις να δεις τα θέματα του')
+				.addChoices({ name: 'progintro', value: 'progtintro' }, { name: 'progtech', value: 'progtech' }),
 		),
 	execute: async (interaction) => {
-		await interaction.reply('Pong');
+		await interaction.deferReply();
+		await respondWithThemata(interaction);
 	},
 };
