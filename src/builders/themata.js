@@ -21,7 +21,7 @@ const themata = {
 
 function buildThemataMessage(subject) {
 	const embed = new EmbedBuilder()
-		.setThumbnail('https://avatars.githubusercontent.com/u/118369192?s=400&u=fe102fd9cd44dbeeea8177762ae6b27e1d5f9315&v=4')
+		// .setThumbnail('https://avatars.githubusercontent.com/u/118369192?s=400&u=fe102fd9cd44dbeeea8177762ae6b27e1d5f9315&v=4')
 		.setColor('#ffffff')
 		.setFooter({ text: 'Με ❤️ για το ΕΜΠ' });
 
@@ -30,15 +30,7 @@ function buildThemataMessage(subject) {
 			.setTitle('ΘΕΜΑΤΑ')
 			.setURL('https://drive.proton.me/urls/AS25NTFYBC#k3tt3RfsRHsm')
 			.setDescription(
-				`Για να δείτε όλους τους φακέλους και όλα τα αρχεία, πατήστε τον τίτλο "ΘΕΜΑΤΑ" επάνω ή το γκρι κουμπί παρακάτω.
-
-				Ο φάκελος περιέχει θέματα για **progtech** και **progintro** και οι ονομασίες των αρχείων είναι στη μορφή:
-
-				> year\\_kan/ep/ptix\\_group\\_subjectCode.pdf
-				> έτος\\_kan/ep/ptix\\_ομάδα\\_κώδικας.pdf
-
-				Τα αρχεία αυτά βρίσκονται και στο [GitHub](https://github.com/OpenNTUA/themata)`
-				,
+				'Για να δείτε όλους τους φακέλους και όλα τα αρχεία, πατήστε τον τίτλο "ΘΕΜΑΤΑ" επάνω ή το γκρι κουμπί παρακάτω.\n\nΟ φάκελος περιέχει θέματα για **progtech** και **progintro** και οι ονομασίες των αρχείων είναι στη μορφή:\n\n> year\\_kan/ep/ptix\\_group\\_subjectCode.pdf\n> έτος\\_kan/ep/ptix\\_ομάδα\\_κώδικας.pdf\n\nΤα αρχεία αυτά βρίσκονται και στο [GitHub](https://github.com/OpenNTUA/themata)',
 			);
 
 		const row = new ActionRowBuilder()
@@ -63,8 +55,7 @@ function buildThemataMessage(subject) {
 		embed
 			.setTitle(`Θέματα του ${subject}`)
 			.setDescription(
-				`**Μπορείτε να κατεβάσετε το αρχείο πατώντας πάνω τους**
-				${Object.entries(themata[subject]).reduce((acc, [key, value]) => { acc += `- [${escapeItalic(key)}](${value})\n\n`; return acc; }, '')}`,
+				`**Μπορείτε να κατεβάσετε το αρχείο πατώντας πάνω τους**\n${Object.entries(themata[subject]).reduce((acc, [key, value]) => { acc += `- [${escapeItalic(key)}](${value})\n\n`; return acc; }, '')}`,
 			);
 
 		return { embeds: [embed], components: [], ephemeral: true, fetchReply: true };
