@@ -10,7 +10,7 @@ module.exports = {
 			option
 				.setName('subject')
 				.setDescription('Το μάθημα που θέλεις να δεις τα θέματα του')
-				.addChoices({ name: 'progintro', value: 'progtintro' }, { name: 'progtech', value: 'progtech' }),
+				.addChoices({ name: 'progintro', value: 'progintro' }, { name: 'progtech', value: 'progtech' }),
 		),
 	execute: async (interaction) => {
 		await interaction.deferReply();

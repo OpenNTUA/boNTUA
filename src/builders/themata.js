@@ -1,4 +1,4 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, blockQuote } = require('discord.js');
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, escapeItalic } = require('discord.js');
 
 const themata = {
 	progintro: {
@@ -23,37 +23,39 @@ function buildThemataMessage(subject) {
 	const embed = new EmbedBuilder()
 		.setThumbnail('https://avatars.githubusercontent.com/u/118369192?s=400&u=fe102fd9cd44dbeeea8177762ae6b27e1d5f9315&v=4')
 		.setColor('#ffffff')
-		.setFooter('Από ❤️ για το ΕΜΠ');
+		.setFooter({ text: 'Με ❤️ για το ΕΜΠ' });
 
-	if (subject === undefined) {
+	if (subject === null) {
 		embed
 			.setTitle('ΘΕΜΑΤΑ')
 			.setURL('https://drive.proton.me/urls/AS25NTFYBC#k3tt3RfsRHsm')
 			.setDescription(
 				`Για να δείτε όλους τους φακέλους και όλα τα αρχεία, πατήστε τον τίτλο "ΘΕΜΑΤΑ" επάνω ή το γκρι κουμπί παρακάτω.
+
 				Ο φάκελος περιέχει θέματα για **progtech** και **progintro** και οι ονομασίες των αρχείων είναι στη μορφή:
-				${blockQuote('year_kan/ep/ptix_group_subjectCode.pdf')}
-				${blockQuote('έτος_kan/ep/ptix_ομάδα_κώδικας.pdf')}
+
+				> year\\_kan/ep/ptix\\_group\\_subjectCode.pdf
+				> έτος\\_kan/ep/ptix\\_ομάδα\\_κώδικας.pdf
 
 				Τα αρχεία αυτά βρίσκονται και στο [GitHub](https://github.com/OpenNTUA/themata)`
 				,
 			);
 
-		const progintroButton = new ButtonBuilder()
-			.setCustomId('progintro')
-			.setStyle(ButtonStyle.PRIMARY)
-			.setLabel('progintro');
-		const progtechButton = new ButtonBuilder()
-			.setCustomId('progtech')
-			.setStyle(ButtonStyle.PRIMARY)
-			.setLabel('progtech');
-		const themataButton = new ButtonBuilder()
-			.setURL('https://drive.proton.me/urls/AS25NTFYBC#k3tt3RfsRHsm')
-			.setStyle(ButtonStyle.LINK)
-			.setLabel('ΘΕΜΑΤΑ');
-
 		const row = new ActionRowBuilder()
-			.addComponents(progintroButton, progtechButton, themataButton);
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId('progintro')
+					.setStyle(ButtonStyle.Primary)
+					.setLabel('progintro'),
+				new ButtonBuilder()
+					.setCustomId('progtech')
+					.setStyle(ButtonStyle.Primary)
+					.setLabel('progtech'),
+				new ButtonBuilder()
+					.setURL('https://drive.proton.me/urls/AS25NTFYBC#k3tt3RfsRHsm')
+					.setStyle(ButtonStyle.Link)
+					.setLabel('ΘΕΜΑΤΑ'),
+			);
 
 		return { embeds: [embed], components: [row], ephemeral: true, fetchReply: true };
 	}
@@ -62,10 +64,10 @@ function buildThemataMessage(subject) {
 			.setTitle(`Θέματα του ${subject}`)
 			.setDescription(
 				`**Μπορείτε να κατεβάσετε το αρχείο πατώντας πάνω τους**
-				${Object.entries(themata[subject]).reduce((acc, [key, value]) => {acc += `[${key}](${value})\n\n`; return acc;}, '')}`,
+				${Object.entries(themata[subject]).reduce((acc, [key, value]) => { acc += `- [${escapeItalic(key)}](${value})\n\n`; return acc; }, '')}`,
 			);
 
-		return { embeds: [embed], ephemeral: true };
+		return { embeds: [embed], components: [], ephemeral: true, fetchReply: true };
 	}
 }
 
