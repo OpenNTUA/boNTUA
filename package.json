@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "node src/deploy-commands.js && node src/index.js",
+    "startpm2": "node src/deploy-commands.js && pm2 start src/index.js",
     "json-server": "json-server --port 3001 --routes src/routes.json --watch src/db.json",
     "deploy-data": "json-server --port 3001 --watch src/deploy-data.js --routes src/routes.json"
   },
@@ -8,7 +9,8 @@
     "axios": "^1.2.0",
     "discord.js": "^14.8.0",
     "dotenv": "^16.0.3",
-    "json-server": "^0.17.1"
+    "json-server": "^0.17.1",
+    "pm2": "^5.3.0"
   },
   "devDependencies": {
     "eslint": "^8.28.0"
